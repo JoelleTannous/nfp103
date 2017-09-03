@@ -13,7 +13,7 @@ public class Saca extends Thread
 {
    // private static ArrayList <Avion> listAvion;
     private static HashMap <String,Avion> mapAvion; 
-    private static HashMap<String, Avion> avionCtrl;
+    private static HashMap<String,Avion> avionCtrl;
     
     private static BufferedReader buffer;
     private static ArrayList <BufferedReader> listBuffer;
@@ -83,17 +83,17 @@ public class Saca extends Thread
 	String num_ctrl = "";
         String [] c;
         String user;
-        String result = "";
+        String result = null;
         int valeur = 0;
         int num_mod = 0;
     
-        public controlleur (Socket s)
+        public controlleur (Socket socket)
         {
-            socket=s;
+            this.socket=socket;
             try 
             {
-                in = new BufferedReader (new InputStreamReader(s.getInputStream()));
-                out = new PrintWriter (s.getOutputStream(),true);
+                in = new BufferedReader (new InputStreamReader(socket.getInputStream()));
+                out = new PrintWriter (socket.getOutputStream(),true);
             }
             catch (Exception e)
             {
@@ -217,7 +217,7 @@ public class Saca extends Thread
             }
             catch (Exception e)
             {
-            
+                System.out.println(e.getMessage());
             }    
             }
         }
@@ -251,7 +251,7 @@ public class Saca extends Thread
         }
     }
     
-        @Override
+   @Override
    public void run ()
    {
        System.out.println("SACA a demarré");
@@ -266,7 +266,5 @@ public class Saca extends Thread
        {
            System.out.println(e.getMessage());
        }
-   }
-   
-   
+   }   
 }
