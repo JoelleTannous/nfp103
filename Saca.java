@@ -48,14 +48,14 @@ public class Saca extends Thread
         }  
     }
         
-    public static class AjouterControlAvion extends Thread 
+    public class AjouterControlAvion extends Thread 
     {
         @Override
         public void run ()
         {
             try 
             {
-                serveur = new ServerSocket(6001);
+                serveur = new ServerSocket(4001);
                 while (true)
                 {
                     socket = serveur.accept();
@@ -222,7 +222,7 @@ public class Saca extends Thread
             }
         }
     
-    public static class ajouterAvion extends Thread
+    public class ajouterAvion extends Thread
     {
         Socket socket;
         ServerSocket server;
@@ -251,7 +251,7 @@ public class Saca extends Thread
         }
     }
     
-   @Override
+        @Override
    public void run ()
    {
        System.out.println("SACA a demarré");
@@ -266,5 +266,7 @@ public class Saca extends Thread
        {
            System.out.println(e.getMessage());
        }
-   }   
+   }
+   
+   
 }
