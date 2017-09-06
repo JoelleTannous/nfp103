@@ -31,7 +31,7 @@ public class Avion
     
     String ctrl = "c";
     
-public void avion () throws IOException
+public Avion() throws IOException 
 {
     altitudeMax = 20000;
     altitudeMin = 0;
@@ -40,16 +40,19 @@ public void avion () throws IOException
     pause = 2000;
     
     // intialisation des paramétres de l'avion
-    coord.setX ((int) (1000 + Math.random()*10 % 1000));
-    coord.setY ((int) (1000 + Math.random()*10 % 1000));
-    coord.setAltitude ((int) (1000 + Math.random()*10 % 1000));
+    int x = ((int) (1000 + Math.random()*10 % 1000));
+    int y = ((int) (1000 + Math.random()*10 % 1000));
+    int alt = ((int) (1000 + Math.random()*10 % 1000));
 
-    dep.setCap ( (int)( Math.random() * 10 % 360));
-    dep.setVitesse ( (int) (600  + Math.random() * 10 % 200));
+    int cap = ( (int)( Math.random() * 10 % 360));
+    int v = ( (int) (600  + Math.random() * 10 % 200));
 
     // initialisation du numero de l'avion : chaine de 5 caract?res 
     // formée de 2 lettres puis 3 chiffres
     numeroAvion = generateNum();
+    
+    dep = new deplacement(v, cap);
+    coord = new coordonnees(x, y, alt);
     
     ouvrir_communication();
     envoyer_caracteristiques();
@@ -119,7 +122,7 @@ public String afficher_donnees ()
     int a = coord.getAltitude();
     int v = dep.getVitesse();
     int c = dep.getCap();
-    return "Avion " + numeroAvion + " ---> localisation: ( "+ x +" , "+ y +" ) -- altitude: " + a + " -- vitesse: " + v + " -- capacite: " + c ;
+    return "Avion " + numeroAvion + " ---> position: ( "+ x +" , "+ y +" ) -- altitude: " + a + " -- vitesse: " + v + " -- capacite: " + c ;
 }
 
 void envoyer_caracteristiques ()
