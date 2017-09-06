@@ -38,13 +38,11 @@ public class controlleur extends Thread
             {   
                 System.out.println("Entrez le numero de l'avion.");
                 user = read.readLine();
-                if (user != null && user.length()== 5)
-                {
+                
                     out.println(num + "-avion" + user); // envoyer a saca: numctrl-numavion
                     response = in.readLine();
                     System.out.println("SACA répond :"+response);
                     if(response!=null) avion = user;
-                }
             }
             while (true)
             {
